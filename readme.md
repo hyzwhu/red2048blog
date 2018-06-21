@@ -135,6 +135,10 @@ move-down: function [][
 
 ![4.png](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/4.png)
 
+# 3 游戏完成
+这样一来使用red语言制作2048已经完成了，可以参考源码
+https://github.com/hyzwhu/red-2048/blob/master/2048.red
+
 
 
 
