@@ -6,7 +6,7 @@
 
 首先在面板上画出格子，这里使用base来当作格子。
 
-![1.png](image\1.png)
+![1.png](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/1.png)
 
 ## 1.2 创立二维block
 
@@ -22,7 +22,7 @@
 
 主要操作是遍历整个二维block，并且给每一个方格赋予其对应的二维block中的值就可以了。```	grid-world/pane/:l/text: form grid-block/:i/:j```，注意在遍历的同时，还需要将不为“0”的元素的visible?属性置为true，将为“0”的元素的visible?属性置为false即可。在遍历的同时还可以给每一个数字（即2，4，8，16...）赋予不同的颜色，主要操作color属性就可以了。
 
-![2.png](image\2.png)
+![2.png](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/2.png)
 
 # 2 2048游戏逻辑
 
@@ -36,7 +36,7 @@
 
 2. 接下来就是平移操作，试想一下，平移的基本操作便是判断一个元素是否为“0”，若为0则跳过到其右边的元素，若不为零则判断靠其左的元素是否为“0”：若为“0”则用该元素替代其靠左的元素，其元素本来的位置置为“0”；若不为“0”则无操作。那么现在要考虑的便是循环次数的问题，试想一下最右边的元素，若是其左边都为“0”，那么进行向左操作的之后结果是不是移动到了最左边，可以把这个过程想象成一个"冒泡排序"，那么这个循环就是一个每次循环次数四次的一级嵌套循环。若变成一级循环则一共的次数为4x4=16次。
 
-![g1.gif](image\g1.gif)
+![g1.gif](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/g1.gif)
 
 以上gif便是实现了放个移动或重合逻辑后向左操作的结果。
 
@@ -59,7 +59,7 @@
 
 可以想想上面的逻辑是不是在添加元素的时候，若是有几次重复动作出现（），像下图一样，此时可以在每一次可以添加的操作时候进行一个添加几率的判断，就像上面2或4出现的机率判断的思路一样。
 
-![g2.gif](image\g2.gif)
+![g2.gif](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/g2.gif)
 
 以上gif便是完成了2.1中逻辑后加入新元素的现象。
 
@@ -107,7 +107,7 @@ move-down: function [][
 
 其他方向以此类推。
 
-![g3.gif](image\g3.gif)
+![g3.gif](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/g3.gif)
 
 以上gif是分别使用向左向上向右向下操作后的结果。
 
@@ -117,7 +117,7 @@ move-down: function [][
 
 判断逻辑是，当empty不再返回true的时，即所有格子都被填满的时候，需要检查一下每个元素是否和其相邻的元素是否相等，具体算法是从左上角开始判断，每次与靠其右和靠其下边的元素比较看是否相等(可以使用初始化一个logic!变量为false，这里假设使用canmove变量来存储)：若相等则可以直接退出循环，将canmove置为true；若不等则以其靠右的元素为基准继续进行如上判断。以此类推遍历整个4x4窗口即可。
 
-![g4.gif](image\g4.gif)
+![g4.gif](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/g4.gif)
 
 以上gif便是窗口填满后，向上操作两次得到的结果。
 
@@ -127,13 +127,13 @@ move-down: function [][
 
 从2.4中可以得出，若当窗口填满后而且不能移动，则canmove变量为false，这时候即可判定游戏失败，制作一个游戏窗口再此时弹出即可。
 
-![3.png](image\3.png)
+![3.png](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/3.png)
 
 ### 2.5.2 胜利判断逻辑
 
 当窗口中的方格出现了2048则可表示胜利，所以判定胜利的方法就是遍历整个4x4窗口，若是有2048存在则弹出胜利窗口即可。
 
-![4.png](image\4.png)
+![4.png](https://raw.githubusercontent.com/hyzwhu/red2048blog/master/image/4.png)
 
 
 
